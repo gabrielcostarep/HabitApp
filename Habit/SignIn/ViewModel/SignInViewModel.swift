@@ -16,6 +16,7 @@ class SignInViewModel: ObservableObject {
 
 	init() {
 		cancellable = publisher.sink { value in
+			// 		TODO: Ajeitar esse error no self
 			if value {
 				self.uiState = .goToHomeScreen
 			}
