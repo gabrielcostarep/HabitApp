@@ -11,12 +11,11 @@ import SwiftUI
 class SignInViewModel: ObservableObject {
 	@Published var uiState: SignInUIState = .none
 
-	private let cancellable: AnyCancellable?
+	private var cancellable: AnyCancellable?
 	private let publisher = PassthroughSubject<Bool, Never>()
 
 	init() {
 		cancellable = publisher.sink { value in
-			// 		TODO: Ajeitar esse error no self
 			if value {
 				self.uiState = .goToHomeScreen
 			}
