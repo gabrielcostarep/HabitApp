@@ -10,10 +10,7 @@ import SwiftUI
 struct SignInView: View {
 	@ObservedObject var viewModel: SignInViewModel
 
-	@State var email     = ""
-	@State var password  = ""
-
-	@State var hiddenNavigation = true
+	@State var FormStates = SignInViewStates()
 
 	var body: some View {
 		if case SignInUIState.goToHomeScreen = viewModel.uiState {
@@ -33,9 +30,9 @@ struct SignInView: View {
 							.foregroundStyle(.orange)
 							.font(.title.bold())
 
-						createTextField(iconName: "person", state: $email, placeholder: "Email")
+						createTextField(iconName: "person", state: $FormStates.email, placeholder: "Email")
 
-						createSecureField(iconName: "lock", state: $password, placeholder: "Senha")
+						createSecureField(iconName: "lock", state: $FormStates.password, placeholder: "Senha")
 
 						enterButton
 
@@ -57,7 +54,7 @@ struct SignInView: View {
 				.padding(.horizontal, 32)
 				.background(.white)
 				.navigationBarTitle("Login", displayMode: .inline)
-				.navigationBarHidden(hiddenNavigation)
+				.navigationBarHidden(FormStates.hiddenNavigation)
 			}
 		}
 	}
@@ -66,10 +63,11 @@ struct SignInView: View {
 extension SignInView {
 	var enterButton: some View {
 		Button("Entrar") {
-			viewModel.login(email: email, password: password)
+			viewModel.login(email: FormStates.email, password: FormStates.password)
 		}
 		.frame(width: 80, height: 40)
-		.background(.orange)
+		.background(FormStates.validate() ? .orange : .orange.opacity(0.4))
+		.disabled(!FormStates.validate())
 		.foregroundStyle(.white)
 		.cornerRadius(10)
 		.padding(.top, 8)
