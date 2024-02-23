@@ -57,4 +57,8 @@ struct SignUpViewStateValidate {
 		return digit1 == Int(String(numbers[String.Index(utf16Offset: 9, in: numbers)])) &&
 			digit2 == Int(String(numbers[String.Index(utf16Offset: 10, in: numbers)]))
 	}
+	
+	func isCompletedForm() -> Bool {
+		return !fullName.isEmpty && isValidEmail() && isValidPassword() && isIdenticalPassword() && isValidCPF() && !phone.isEmpty
+	}
 }

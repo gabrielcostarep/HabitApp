@@ -25,6 +25,7 @@ struct EditSecureFieldView: View {
 					text: $state,
 					prompt: Text(placeholder).foregroundStyle(.gray.opacity(0.5))
 				)
+				.keyboardType(keyboard)
 			}
 			.padding(5)
 			.overlay {

@@ -15,4 +15,12 @@ struct SignInViewStateValidate {
 		let regex = try! NSRegularExpression(pattern: "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}$", options: [.caseInsensitive])
 		return regex.firstMatch(in: email, options: [], range: NSRange(location: 0, length: email.utf16.count)) != nil
 	}
+
+	func isValidPassword() -> Bool {
+		return !password.isEmpty
+	}
+
+	func isCompleteLogin() -> Bool {
+		return isValidEmail() && isValidPassword()
+	}
 }

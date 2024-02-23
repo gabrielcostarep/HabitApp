@@ -43,7 +43,7 @@ struct SignUpView: View {
 							iconName: "key",
 							state: $form.password,
 							placeholder: "Senha",
-							error: "Senha inválida",
+							error: "Precisa ter pelo menos 8 caracteres. \nPrecisa conter pelo menos uma letra maiúscula. \nPrecisa conter pelo menos um dígito.",
 							failure: !form.isValidPassword()
 						)
 						
@@ -123,10 +123,11 @@ extension SignUpView {
 			viewModel.signUp()
 		}
 		.frame(width: 100, height: 40)
-		.background(.orange)
+		.background(!form.isCompletedForm() ? .orange.opacity(0.5) : .orange)
 		.foregroundStyle(.white)
 		.cornerRadius(10)
 		.padding(.top, 8)
+		.disabled(!form.isCompletedForm())
 	}
 }
 

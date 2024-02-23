@@ -11,7 +11,7 @@ struct EditTextFieldView: View {
 	var iconName: String
 	@Binding var state: String
 	var placeholder: String
-	var keyboard: UIKeyboardType? = .default
+	var keyboard: UIKeyboardType = .default
 	var error: String? = nil
 	var failure: Bool = false
 
@@ -25,6 +25,7 @@ struct EditTextFieldView: View {
 					text: $state,
 					prompt: Text(placeholder).foregroundStyle(.gray.opacity(0.5))
 				)
+				.keyboardType(keyboard)
 			}
 			.padding(5)
 			.overlay {
