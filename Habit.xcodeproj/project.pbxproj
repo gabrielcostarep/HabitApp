@@ -20,9 +20,10 @@
 		AD30FA3D2B68962B00A003F2 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD30FA3C2B68962B00A003F2 /* SignUpViewModel.swift */; };
 		AD30FA432B68A5B300A003F2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD30FA422B68A5B300A003F2 /* HomeView.swift */; };
 		AD30FA452B68A5E200A003F2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD30FA442B68A5E200A003F2 /* HomeViewModel.swift */; };
-		AD3AA9652B88728F0054A06A /* EditTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3AA9642B88728F0054A06A /* EditTextView.swift */; };
-		AD518FEF2B74699200C253B5 /* createTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD518FEE2B74699200C253B5 /* createTextField.swift */; };
-		AD518FF12B746BE000C253B5 /* createSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD518FF02B746BE000C253B5 /* createSecureField.swift */; };
+		AD3AA9652B88728F0054A06A /* EditTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3AA9642B88728F0054A06A /* EditTextFieldView.swift */; };
+		AD3AA9672B8875560054A06A /* SignInViewStateValidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3AA9662B8875560054A06A /* SignInViewStateValidate.swift */; };
+		AD3AA9692B8877950054A06A /* EditSecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3AA9682B8877950054A06A /* EditSecureFieldView.swift */; };
+		AD3AA96B2B8879070054A06A /* SignUpViewStateValidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3AA96A2B8879070054A06A /* SignUpViewStateValidate.swift */; };
 		AD63F19B2B787A0E00EE97A7 /* SignUpUIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD63F19A2B787A0E00EE97A7 /* SignUpUIState.swift */; };
 		AD77D1862B662212002FDADF /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77D1852B662212002FDADF /* SplashViewModel.swift */; };
 		ADAF0EF62B7353F400E582E1 /* SignInViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAF0EF52B7353F400E582E1 /* SignInViewRouter.swift */; };
@@ -45,9 +46,10 @@
 		AD30FA3C2B68962B00A003F2 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		AD30FA422B68A5B300A003F2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AD30FA442B68A5E200A003F2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		AD3AA9642B88728F0054A06A /* EditTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextView.swift; sourceTree = "<group>"; };
-		AD518FEE2B74699200C253B5 /* createTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createTextField.swift; sourceTree = "<group>"; };
-		AD518FF02B746BE000C253B5 /* createSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createSecureField.swift; sourceTree = "<group>"; };
+		AD3AA9642B88728F0054A06A /* EditTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextFieldView.swift; sourceTree = "<group>"; };
+		AD3AA9662B8875560054A06A /* SignInViewStateValidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewStateValidate.swift; sourceTree = "<group>"; };
+		AD3AA9682B8877950054A06A /* EditSecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSecureFieldView.swift; sourceTree = "<group>"; };
+		AD3AA96A2B8879070054A06A /* SignUpViewStateValidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewStateValidate.swift; sourceTree = "<group>"; };
 		AD63F19A2B787A0E00EE97A7 /* SignUpUIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUIState.swift; sourceTree = "<group>"; };
 		AD77D1852B662212002FDADF /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		ADAF0EF52B7353F400E582E1 /* SignInViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewRouter.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			children = (
 				AD30FA312B68913F00A003F2 /* SignInViewModel.swift */,
 				ADAF0EF52B7353F400E582E1 /* SignInViewRouter.swift */,
+				AD3AA9662B8875560054A06A /* SignInViewStateValidate.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				AD30FA3C2B68962B00A003F2 /* SignUpViewModel.swift */,
+				AD3AA96A2B8879070054A06A /* SignUpViewStateValidate.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -236,10 +240,9 @@
 		AD518FF22B746C9E00C253B5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AD518FEE2B74699200C253B5 /* createTextField.swift */,
-				AD518FF02B746BE000C253B5 /* createSecureField.swift */,
 				ADC8BC792B76047300E97817 /* createImageIcon.swift */,
-				AD3AA9642B88728F0054A06A /* EditTextView.swift */,
+				AD3AA9642B88728F0054A06A /* EditTextFieldView.swift */,
+				AD3AA9682B8877950054A06A /* EditSecureFieldView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -341,7 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD30FA342B68937A00A003F2 /* SplashViewRouter.swift in Sources */,
-				AD518FF12B746BE000C253B5 /* createSecureField.swift in Sources */,
+				AD3AA9692B8877950054A06A /* EditSecureFieldView.swift in Sources */,
 				AD30FA302B68912500A003F2 /* SignInView.swift in Sources */,
 				AD30FA3D2B68962B00A003F2 /* SignUpViewModel.swift in Sources */,
 				AD30FA322B68913F00A003F2 /* SignInViewModel.swift in Sources */,
@@ -349,12 +352,13 @@
 				AD30FA432B68A5B300A003F2 /* HomeView.swift in Sources */,
 				AD63F19B2B787A0E00EE97A7 /* SignUpUIState.swift in Sources */,
 				AD1ADAA72B637C9300175CCB /* HabitApp.swift in Sources */,
-				AD518FEF2B74699200C253B5 /* createTextField.swift in Sources */,
+				AD3AA9672B8875560054A06A /* SignInViewStateValidate.swift in Sources */,
 				AD30FA452B68A5E200A003F2 /* HomeViewModel.swift in Sources */,
+				AD3AA96B2B8879070054A06A /* SignUpViewStateValidate.swift in Sources */,
 				AD1ADAB82B637DF400175CCB /* SplashView.swift in Sources */,
 				AD77D1862B662212002FDADF /* SplashViewModel.swift in Sources */,
 				ADC8BC782B75FA5700E97817 /* Gender.swift in Sources */,
-				AD3AA9652B88728F0054A06A /* EditTextView.swift in Sources */,
+				AD3AA9652B88728F0054A06A /* EditTextFieldView.swift in Sources */,
 				ADC8BC7A2B76047300E97817 /* createImageIcon.swift in Sources */,
 				AD30FA3B2B6895E400A003F2 /* SignUpView.swift in Sources */,
 				ADAF0EF62B7353F400E582E1 /* SignInViewRouter.swift in Sources */,

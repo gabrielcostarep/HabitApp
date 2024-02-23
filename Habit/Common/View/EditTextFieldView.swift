@@ -1,5 +1,5 @@
 //
-//  EditTextView.swift
+//  EditTextFieldView.swift
 //  Habit
 //
 //  Created by Gabriel Costa on 23/02/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditTextView: View {
+struct EditTextFieldView: View {
 	var iconName: String
 	@Binding var state: String
 	var placeholder: String
@@ -42,5 +42,5 @@ struct EditTextView: View {
 }
 
 #Preview {
-	EditTextView(iconName: "person", state: .constant("Texto"), placeholder: "E-mail")
+	EditTextFieldView(iconName: "person", state: .constant("Texto"), placeholder: "E-mail")
 }

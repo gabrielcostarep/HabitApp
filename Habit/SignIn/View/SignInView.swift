@@ -10,8 +10,7 @@ import SwiftUI
 struct SignInView: View {
 	@ObservedObject var viewModel: SignInViewModel
 
-	@State var email:    String   = ""
-	@State var password: String   = ""
+	@State var form = SignInViewStateValidate()
 
 	@State var hiddenNavigation = true
 
@@ -33,16 +32,21 @@ struct SignInView: View {
 							.foregroundStyle(.orange)
 							.font(.title.bold())
 
-						EditTextView(
+						EditTextFieldView(
 							iconName: "person",
-							state: $email,
+							state: $form.email,
 							placeholder: "E-mail",
 							keyboard: .emailAddress,
 							error: "E-mail inválido",
-							failure: email.count < 5
+							failure: form.notValidEmail()
 						)
 
-						createSecureField(iconName: "lock", state: $password, placeholder: "Senha")
+						EditSecureFieldView(
+							iconName: "lock",
+							state: $form.password,
+							placeholder: "Senha",
+							failure: false
+						)
 
 						enterButton
 
@@ -73,7 +77,7 @@ struct SignInView: View {
 extension SignInView {
 	var enterButton: some View {
 		Button("Entrar") {
-			viewModel.login(email: email, password: password)
+			viewModel.login(email: form.email, password: form.password)
 		}
 		.frame(width: 80, height: 40)
 		.background(.orange)

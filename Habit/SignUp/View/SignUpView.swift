@@ -10,13 +10,7 @@ import SwiftUI
 struct SignUpView: View {
 	@ObservedObject var viewModel: SignUpViewModel
 	
-	@State var fullName        = ""
-	@State var email           = ""
-	@State var password        = ""
-	@State var passwordVerify  = ""
-	@State var document        = ""
-	@State var phone           = ""
-	@State var birthday        = ""
+	@State var form = SignUpViewStateValidate()
 	@State var gender          = Gender.undefined
 	
 	var body: some View {
@@ -29,20 +23,18 @@ struct SignUpView: View {
 						.foregroundStyle(.black)
 						.font(.title.bold())
 						
-					VStack(spacing: 16) {
-						createTextField(iconName: "person", state: $fullName, placeholder: "Nome Completo")
+					VStack(alignment: .center, spacing: 16) {
+						EditTextFieldView(iconName: "person", state: $form.fullName, placeholder: "Nome Completo")
+						
+						EditTextFieldView(iconName: "envelope.fill", state: $form.email, placeholder: "E-mail", keyboard: .emailAddress, error: "E-mail inválido", failure: form.notValidEmail())
 							
-						createTextField(iconName: "envelope.fill", state: $email, placeholder: "Email")
+						EditSecureFieldView(iconName: "key", state: $form.password, placeholder: "Senha", error: "Senha inválida", failure: form.notValidPassword())
+						
+						EditSecureFieldView(iconName: "key.fill", state: $form.passwordVerify, placeholder: "Repetir Senha", error: "Senha não idêntica", failure: form.notIdenticalPassword())
 							
-						createSecureField(iconName: "key", state: $password, placeholder: "Senha")
-							
-						createSecureField(iconName: "key.fill", state: $passwordVerify, placeholder: "Repetir Senha")
-							
-						createTextField(iconName: "person.crop.artframe", state: $document, placeholder: "CPF")
-							
-						createTextField(iconName: "smartphone", state: $phone, placeholder: "Telefone")
-							
-						createTextField(iconName: "calendar", state: $birthday, placeholder: "Data de Nascimento")
+						EditTextFieldView(iconName: "person.crop.artframe", state: $form.document, placeholder: "CPF", keyboard: .numberPad)
+						
+						EditTextFieldView(iconName: "smartphone", state: $form.phone, placeholder: "Telefone", keyboard: .phonePad)
 							
 						genderField
 							
@@ -76,7 +68,7 @@ extension SignUpView {
 				.padding(5)
 			
 			Picker("Gender", selection: $gender) {
-				ForEach(Gender.allCases) {genderValue in
+				ForEach(Gender.allCases) { genderValue in
 					Text(genderValue.rawValue)
 						.tag(genderValue)
 				}
@@ -95,11 +87,11 @@ extension SignUpView {
 		Button("Cadastrar") {
 			viewModel.signUp()
 		}
-			.frame(width: 100, height: 40)
-			.background(.orange)
-			.foregroundStyle(.white)
-			.cornerRadius(10)
-			.padding(.top, 8)
+		.frame(width: 100, height: 40)
+		.background(.orange)
+		.foregroundStyle(.white)
+		.cornerRadius(10)
+		.padding(.top, 8)
 	}
 }
 
