@@ -10,7 +10,10 @@ import SwiftUI
 struct SignInView: View {
 	@ObservedObject var viewModel: SignInViewModel
 
-	@State var FormStates = SignInViewStates()
+	@State var email:    String   = ""
+	@State var password: String   = ""
+
+	@State var hiddenNavigation = true
 
 	var body: some View {
 		if case SignInUIState.goToHomeScreen = viewModel.uiState {
@@ -30,9 +33,16 @@ struct SignInView: View {
 							.foregroundStyle(.orange)
 							.font(.title.bold())
 
-						createTextField(iconName: "person", state: $FormStates.email, placeholder: "Email")
+						EditTextView(
+							iconName: "person",
+							state: $email,
+							placeholder: "E-mail",
+							keyboard: .emailAddress,
+							error: "E-mail inválido",
+							failure: email.count < 5
+						)
 
-						createSecureField(iconName: "lock", state: $FormStates.password, placeholder: "Senha")
+						createSecureField(iconName: "lock", state: $password, placeholder: "Senha")
 
 						enterButton
 
@@ -54,7 +64,7 @@ struct SignInView: View {
 				.padding(.horizontal, 32)
 				.background(.white)
 				.navigationBarTitle("Login", displayMode: .inline)
-				.navigationBarHidden(FormStates.hiddenNavigation)
+				.navigationBarHidden(hiddenNavigation)
 			}
 		}
 	}
@@ -63,11 +73,10 @@ struct SignInView: View {
 extension SignInView {
 	var enterButton: some View {
 		Button("Entrar") {
-			viewModel.login(email: FormStates.email, password: FormStates.password)
+			viewModel.login(email: email, password: password)
 		}
 		.frame(width: 80, height: 40)
-		.background(FormStates.validate() ? .orange : .orange.opacity(0.4))
-		.disabled(!FormStates.validate())
+		.background(.orange)
 		.foregroundStyle(.white)
 		.cornerRadius(10)
 		.padding(.top, 8)
