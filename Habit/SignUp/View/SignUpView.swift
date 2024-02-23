@@ -36,7 +36,7 @@ struct SignUpView: View {
 							placeholder: "E-mail",
 							keyboard: .emailAddress,
 							error: "E-mail inválido",
-							failure: form.notValidEmail()
+							failure: !form.isValidEmail()
 						)
 							
 						EditSecureFieldView(
@@ -44,22 +44,24 @@ struct SignUpView: View {
 							state: $form.password,
 							placeholder: "Senha",
 							error: "Senha inválida",
-							failure: form.notValidPassword()
+							failure: !form.isValidPassword()
 						)
 						
 						EditSecureFieldView(
 							iconName: "key.fill",
 							state: $form.passwordVerify,
 							placeholder: "Repetir Senha",
-							error: "Senha não idêntica",
-							failure: form.notIdenticalPassword()
+							error: "Senhas precisam ser idênticas",
+							failure: !form.isIdenticalPassword()
 						)
 							
 						EditTextFieldView(
 							iconName: "person.crop.artframe",
 							state: $form.cpf,
 							placeholder: "CPF",
-							keyboard: .numberPad
+							keyboard: .numberPad,
+							error: "CPF inválido",
+							failure: !form.isValidCPF()
 						)
 						
 						EditTextFieldView(

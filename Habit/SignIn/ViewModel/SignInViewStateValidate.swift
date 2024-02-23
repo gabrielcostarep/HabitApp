@@ -11,13 +11,8 @@ struct SignInViewStateValidate {
 	var email:    String   = ""
 	var password: String   = ""
 
-	func notValidEmail() -> Bool {
+	func isValidEmail() -> Bool {
 		let regex = try! NSRegularExpression(pattern: "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}$", options: [.caseInsensitive])
-		return regex.firstMatch(in: email, options: [], range: NSRange(location: 0, length: email.utf16.count)) == nil
-	}
-
-	func notValidPassword() -> Bool {
-		let regex = try! NSRegularExpression(pattern: "^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d@$!%*?&]{8,}$", options: [])
-		return regex.firstMatch(in: password, options: [], range: NSRange(location: 0, length: password.utf16.count)) == nil
+		return regex.firstMatch(in: email, options: [], range: NSRange(location: 0, length: email.utf16.count)) != nil
 	}
 }

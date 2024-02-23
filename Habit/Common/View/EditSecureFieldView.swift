@@ -17,13 +17,6 @@ struct EditSecureFieldView: View {
 
 	var body: some View {
 		VStack {
-			if let error = error, failure == true, !state.isEmpty {
-				VStack(alignment: .leading) {
-					Text(error)
-						.foregroundStyle(.red)
-						.font(.footnote)
-				}
-			}
 			HStack {
 				createImageIcon(iconName: iconName)
 
@@ -37,6 +30,17 @@ struct EditSecureFieldView: View {
 			.overlay {
 				RoundedRectangle(cornerRadius: 8)
 					.stroke(state.isEmpty || !failure ? .gray : .red, lineWidth: 1)
+			}
+
+			if let error = error, failure == true, !state.isEmpty {
+				HStack {
+					Spacer()
+
+					Text(error)
+						.foregroundStyle(.red)
+						.font(.footnote)
+						.padding(0)
+				}
 			}
 		}
 	}

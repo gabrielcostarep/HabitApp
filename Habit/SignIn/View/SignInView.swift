@@ -38,7 +38,7 @@ struct SignInView: View {
 							placeholder: "E-mail",
 							keyboard: .emailAddress,
 							error: "E-mail inválido",
-							failure: form.notValidEmail()
+							failure: !form.isValidEmail()
 						)
 
 						EditSecureFieldView(

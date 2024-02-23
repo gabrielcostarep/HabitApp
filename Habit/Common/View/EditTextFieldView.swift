@@ -31,12 +31,16 @@ struct EditTextFieldView: View {
 				RoundedRectangle(cornerRadius: 8)
 					.stroke(state.isEmpty || !failure ? .gray : .red, lineWidth: 1)
 			}
-		}
+			if let error = error, failure == true, !state.isEmpty {
+				HStack {
+					Spacer()
 
-		if let error = error, failure == true, !state.isEmpty {
-			Text(error)
-				.foregroundStyle(.red)
-				.font(.footnote)
+					Text(error)
+						.foregroundStyle(.red)
+						.font(.footnote)
+						.padding(0)
+				}
+			}
 		}
 	}
 }
