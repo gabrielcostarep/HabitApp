@@ -10,8 +10,8 @@ import SwiftUI
 struct SignUpView: View {
 	@ObservedObject var viewModel: SignUpViewModel
 	
-	@State var form = SignUpViewStateValidate()
-	@State var gender          = Gender.undefined
+	@State var form    = SignUpViewStateValidate()
+	@State var gender  = Gender.undefined
 	
 	var body: some View {
 		ZStack {
@@ -24,17 +24,50 @@ struct SignUpView: View {
 						.font(.title.bold())
 						
 					VStack(alignment: .center, spacing: 16) {
-						EditTextFieldView(iconName: "person", state: $form.fullName, placeholder: "Nome Completo")
+						EditTextFieldView(
+							iconName: "person",
+							state: $form.fullName,
+							placeholder: "Nome Completo"
+						)
 						
-						EditTextFieldView(iconName: "envelope.fill", state: $form.email, placeholder: "E-mail", keyboard: .emailAddress, error: "E-mail inválido", failure: form.notValidEmail())
+						EditTextFieldView(
+							iconName: "envelope.fill",
+							state: $form.email,
+							placeholder: "E-mail",
+							keyboard: .emailAddress,
+							error: "E-mail inválido",
+							failure: form.notValidEmail()
+						)
 							
-						EditSecureFieldView(iconName: "key", state: $form.password, placeholder: "Senha", error: "Senha inválida", failure: form.notValidPassword())
+						EditSecureFieldView(
+							iconName: "key",
+							state: $form.password,
+							placeholder: "Senha",
+							error: "Senha inválida",
+							failure: form.notValidPassword()
+						)
 						
-						EditSecureFieldView(iconName: "key.fill", state: $form.passwordVerify, placeholder: "Repetir Senha", error: "Senha não idêntica", failure: form.notIdenticalPassword())
+						EditSecureFieldView(
+							iconName: "key.fill",
+							state: $form.passwordVerify,
+							placeholder: "Repetir Senha",
+							error: "Senha não idêntica",
+							failure: form.notIdenticalPassword()
+						)
 							
-						EditTextFieldView(iconName: "person.crop.artframe", state: $form.document, placeholder: "CPF", keyboard: .numberPad)
+						EditTextFieldView(
+							iconName: "person.crop.artframe",
+							state: $form.cpf,
+							placeholder: "CPF",
+							keyboard: .numberPad
+						)
 						
-						EditTextFieldView(iconName: "smartphone", state: $form.phone, placeholder: "Telefone", keyboard: .phonePad)
+						EditTextFieldView(
+							iconName: "smartphone",
+							state: $form.phone,
+							placeholder: "Telefone",
+							keyboard: .phonePad
+						)
 							
 						genderField
 							

@@ -12,7 +12,7 @@ struct SignUpViewStateValidate {
 	@State var email           = ""
 	@State var password        = ""
 	@State var passwordVerify  = ""
-	@State var document        = ""
+	@State var cpf             = ""
 	@State var phone           = ""
 
 	func notValidEmail() -> Bool {

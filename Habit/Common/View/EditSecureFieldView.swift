@@ -11,12 +11,19 @@ struct EditSecureFieldView: View {
 	var iconName: String
 	@Binding var state: String
 	var placeholder: String
-	var keyboard: UIKeyboardType? = .default
+	var keyboard: UIKeyboardType = .default
 	var error: String? = nil
 	var failure: Bool = false
 
 	var body: some View {
 		VStack {
+			if let error = error, failure == true, !state.isEmpty {
+				VStack(alignment: .leading) {
+					Text(error)
+						.foregroundStyle(.red)
+						.font(.footnote)
+				}
+			}
 			HStack {
 				createImageIcon(iconName: iconName)
 
@@ -31,12 +38,6 @@ struct EditSecureFieldView: View {
 				RoundedRectangle(cornerRadius: 8)
 					.stroke(state.isEmpty || !failure ? .gray : .red, lineWidth: 1)
 			}
-		}
-
-		if let error = error, failure == true, !state.isEmpty {
-			Text(error)
-				.foregroundStyle(.red)
-				.font(.footnote)
 		}
 	}
 }
