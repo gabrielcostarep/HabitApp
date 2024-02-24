@@ -32,24 +32,11 @@ struct SignInView: View {
 							.foregroundStyle(.orange)
 							.font(.title.bold())
 
-						EditTextFieldView(
-							iconName: "person",
-							state: $form.email,
-							placeholder: "E-mail",
-							keyboard: .emailAddress,
-							error: "E-mail inválido",
-							failure: !form.isValidEmail()
-						)
+						emailField
 
-						EditSecureFieldView(
-							iconName: "lock",
-							state: $form.password,
-							placeholder: "Senha",
-							error: "Senha precisa ter pelo menos 8 caracteres",
-							failure: !form.isValidPassword()
-						)
+						passwordField
 
-						enterButton
+						submitButton
 
 						registerLink
 					}
@@ -72,7 +59,32 @@ struct SignInView: View {
 }
 
 extension SignInView {
-	var enterButton: some View {
+	var emailField: some View {
+		TextFieldView(
+			iconName: "person",
+			state: $form.email,
+			placeholder: "E-mail",
+			keyboard: .emailAddress,
+			error: "E-mail inválido",
+			failure: !form.isValidEmail()
+		)
+	}
+}
+
+extension SignInView {
+	var passwordField: some View {
+		SecureFieldView(
+			iconName: "lock",
+			state: $form.password,
+			placeholder: "Senha",
+			error: "Senha precisa ter pelo menos 8 caracteres",
+			failure: !form.isValidPassword()
+		)
+	}
+}
+
+extension SignInView {
+	var submitButton: some View {
 		LoadingButtonView(
 			action: { viewModel.login(email: form.email, password: form.password) },
 			text: "Entrar",

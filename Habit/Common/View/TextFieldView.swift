@@ -1,5 +1,5 @@
 //
-//  EditSecureFieldView.swift
+//  TextFieldView.swift
 //  Habit
 //
 //  Created by Gabriel Costa on 23/02/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditSecureFieldView: View {
+struct TextFieldView: View {
 	var iconName: String
 	@Binding var state: String
 	var placeholder: String
@@ -20,7 +20,7 @@ struct EditSecureFieldView: View {
 			HStack {
 				createImageIcon(iconName: iconName)
 
-				SecureField(
+				TextField(
 					"",
 					text: $state,
 					prompt: Text(placeholder).foregroundStyle(.gray.opacity(0.5))
@@ -34,7 +34,7 @@ struct EditSecureFieldView: View {
 				RoundedRectangle(cornerRadius: 8)
 					.stroke(state.isEmpty || !failure ? .gray : .red, lineWidth: 1)
 			}
-
+			
 			if let error = error, failure == true, !state.isEmpty {
 				HStack {
 					Spacer()
@@ -50,5 +50,5 @@ struct EditSecureFieldView: View {
 }
 
 #Preview {
-	EditSecureFieldView(iconName: "person", state: .constant("Texto"), placeholder: "E-mail")
+	TextFieldView(iconName: "person", state: .constant("Texto"), placeholder: "E-mail", error: "Texto inválido", failure: true)
 }

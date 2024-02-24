@@ -10,8 +10,8 @@ import SwiftUI
 struct LoadingButtonView: View {
 	var action: () -> Void
 	var text: String
-	var showProgress: Bool  = false
-	var disabled: Bool      = false
+	var showProgress: Bool = false
+	var disabled:     Bool = false
 
 	var body: some View {
 		ZStack {

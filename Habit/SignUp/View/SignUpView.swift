@@ -24,55 +24,18 @@ struct SignUpView: View {
 						.font(.title.bold())
 						
 					VStack(alignment: .center, spacing: 16) {
-						EditTextFieldView(
-							iconName: "person",
-							state: $form.fullName,
-							placeholder: "Nome Completo"
-						)
+						fullNameField
 						
-						EditTextFieldView(
-							iconName: "envelope.fill",
-							state: $form.email,
-							placeholder: "E-mail",
-							keyboard: .emailAddress,
-							error: "E-mail inválido",
-							failure: !form.isValidEmail()
-						)
-							
-						EditSecureFieldView(
-							iconName: "key",
-							state: $form.password,
-							placeholder: "Senha",
-							error: "Precisa ter pelo menos 8 caracteres. \nPrecisa conter pelo menos uma letra maiúscula. \nPrecisa conter pelo menos um dígito.",
-							failure: !form.isValidPassword()
-						)
+						emailField
 						
-						EditSecureFieldView(
-							iconName: "key.fill",
-							state: $form.passwordVerify,
-							placeholder: "Repetir Senha",
-							error: "Senhas precisam ser idênticas",
-							failure: !form.isIdenticalPassword()
-						)
-							
-						EditTextFieldView(
-							iconName: "person.crop.artframe",
-							state: $form.cpf,
-							placeholder: "CPF",
-							keyboard: .numberPad,
-							error: "CPF inválido",
-							failure: !form.isValidCPF()
-						)
+						passwordField
 						
-						EditTextFieldView(
-							iconName: "smartphone",
-							state: $form.phone,
-							placeholder: "Telefone",
-							keyboard: .phonePad,
-							error: "Número inválido",
-							failure: !form.isValidPhoneNumber()
-						)
-							
+						passwordVerifyField
+						
+						cpfField
+						
+						phoneField
+						
 						genderField
 							
 						registerButton
@@ -90,6 +53,79 @@ struct SignUpView: View {
 			.padding(.horizontal, 32)
 			.background(.white)
 		}
+	}
+}
+
+extension SignUpView {
+	var fullNameField: some View {
+		TextFieldView(
+			iconName: "person",
+			state: $form.fullName,
+			placeholder: "Nome Completo"
+		)
+	}
+}
+
+extension SignUpView {
+	var emailField: some View {
+		TextFieldView(
+			iconName: "envelope.fill",
+			state: $form.email,
+			placeholder: "E-mail",
+			keyboard: .emailAddress,
+			error: "E-mail inválido",
+			failure: !form.isValidEmail()
+		)
+	}
+}
+
+extension SignUpView {
+	var passwordField: some View {
+		SecureFieldView(
+			iconName: "key",
+			state: $form.password,
+			placeholder: "Senha",
+			error: "Precisa ter pelo menos 8 caracteres. \nPrecisa conter pelo menos uma letra maiúscula. \nPrecisa conter pelo menos um dígito.",
+			failure: !form.isValidPassword()
+		)
+	}
+}
+
+extension SignUpView {
+	var passwordVerifyField: some View {
+		SecureFieldView(
+			iconName: "key.fill",
+			state: $form.passwordVerify,
+			placeholder: "Repetir Senha",
+			error: "Senhas precisam ser idênticas",
+			failure: !form.isIdenticalPassword()
+		)
+	}
+}
+
+extension SignUpView {
+	var cpfField: some View {
+		TextFieldView(
+			iconName: "person.crop.artframe",
+			state: $form.cpf,
+			placeholder: "CPF",
+			keyboard: .numberPad,
+			error: "CPF inválido",
+			failure: !form.isValidCPF()
+		)
+	}
+}
+
+extension SignUpView {
+	var phoneField: some View {
+		TextFieldView(
+			iconName: "smartphone",
+			state: $form.phone,
+			placeholder: "Telefone",
+			keyboard: .phonePad,
+			error: "Número inválido",
+			failure: !form.isValidPhoneNumber()
+		)
 	}
 }
 
