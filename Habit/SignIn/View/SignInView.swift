@@ -60,7 +60,7 @@ struct SignInView: View {
 
 extension SignInView {
 	var emailField: some View {
-		TextFieldView(
+		EditFieldView(
 			iconName: "person",
 			state: $form.email,
 			placeholder: "E-mail",
@@ -73,12 +73,13 @@ extension SignInView {
 
 extension SignInView {
 	var passwordField: some View {
-		SecureFieldView(
+		EditFieldView(
 			iconName: "lock",
 			state: $form.password,
 			placeholder: "Senha",
 			error: "Senha precisa ter pelo menos 8 caracteres",
-			failure: !form.isValidPassword()
+			failure: !form.isValidPassword(),
+			isSecure: true
 		)
 	}
 }
