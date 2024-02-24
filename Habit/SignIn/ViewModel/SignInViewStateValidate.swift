@@ -17,7 +17,7 @@ struct SignInViewStateValidate {
 	}
 
 	func isValidPassword() -> Bool {
-		return !password.isEmpty
+		return password.count >= 8
 	}
 
 	func isCompleteLogin() -> Bool {

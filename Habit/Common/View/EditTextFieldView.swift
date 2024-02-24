@@ -32,6 +32,7 @@ struct EditTextFieldView: View {
 				RoundedRectangle(cornerRadius: 8)
 					.stroke(state.isEmpty || !failure ? .gray : .red, lineWidth: 1)
 			}
+			
 			if let error = error, failure == true, !state.isEmpty {
 				HStack {
 					Spacer()
@@ -47,5 +48,5 @@ struct EditTextFieldView: View {
 }
 
 #Preview {
-	EditTextFieldView(iconName: "person", state: .constant("Texto"), placeholder: "E-mail")
+	EditTextFieldView(iconName: "person", state: .constant("Texto"), placeholder: "E-mail", error: "Texto inválido", failure: true)
 }

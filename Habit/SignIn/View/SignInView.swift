@@ -45,8 +45,8 @@ struct SignInView: View {
 							iconName: "lock",
 							state: $form.password,
 							placeholder: "Senha",
-							error: "Senha inválida",
-							failure: form.isValidPassword()
+							error: "Senha precisa ter pelo menos 8 caracteres",
+							failure: !form.isValidPassword()
 						)
 
 						enterButton
@@ -81,7 +81,7 @@ extension SignInView {
 			viewModel.login(email: form.email, password: form.password)
 		}
 		.frame(width: 80, height: 40)
-		.background(!form.isCompleteLogin() ? .orange.opacity(0.5) : .orange)
+		.background(form.isCompleteLogin() ? .orange : .orange.opacity(0.5))
 		.foregroundStyle(.white)
 		.cornerRadius(10)
 		.padding(.top, 8)

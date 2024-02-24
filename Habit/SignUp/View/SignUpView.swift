@@ -68,7 +68,9 @@ struct SignUpView: View {
 							iconName: "smartphone",
 							state: $form.phone,
 							placeholder: "Telefone",
-							keyboard: .phonePad
+							keyboard: .phonePad,
+							error: "Número inválido",
+							failure: !form.isValidPhoneNumber()
 						)
 							
 						genderField
@@ -123,7 +125,7 @@ extension SignUpView {
 			viewModel.signUp()
 		}
 		.frame(width: 100, height: 40)
-		.background(!form.isCompletedForm() ? .orange.opacity(0.5) : .orange)
+		.background(form.isCompletedForm() ? .orange : .orange.opacity(0.5))
 		.foregroundStyle(.white)
 		.cornerRadius(10)
 		.padding(.top, 8)

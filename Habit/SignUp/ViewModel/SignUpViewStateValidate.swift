@@ -58,7 +58,13 @@ struct SignUpViewStateValidate {
 			digit2 == Int(String(numbers[String.Index(utf16Offset: 10, in: numbers)]))
 	}
 	
+	func isValidPhoneNumber() -> Bool {
+		let phoneRegex = "^\\(?[1-9]{2}\\)? ?(?:[2-8]|9[1-9])[0-9]{3}\\-?[0-9]{4}$"
+		let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+		return phoneTest.evaluate(with: phone)
+	}
+
 	func isCompletedForm() -> Bool {
-		return !fullName.isEmpty && isValidEmail() && isValidPassword() && isIdenticalPassword() && isValidCPF() && !phone.isEmpty
+		return !fullName.isEmpty && isValidEmail() && isValidPassword() && isIdenticalPassword() && isValidCPF() && isValidPhoneNumber()
 	}
 }
