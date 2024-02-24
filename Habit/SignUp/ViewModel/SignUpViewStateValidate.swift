@@ -14,6 +14,10 @@ struct SignUpViewStateValidate {
 	var passwordVerify  = ""
 	var cpf             = ""
 	var phone           = ""
+	
+	func isValidFullName() -> Bool {
+		return fullName.count >= 3
+	}
 
 	func isValidEmail() -> Bool {
 		let regex = try! NSRegularExpression(pattern: "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}$", options: [.caseInsensitive])
@@ -65,6 +69,6 @@ struct SignUpViewStateValidate {
 	}
 
 	func isCompletedForm() -> Bool {
-		return !fullName.isEmpty && isValidEmail() && isValidPassword() && isIdenticalPassword() && isValidCPF() && isValidPhoneNumber()
+		return isValidFullName() && isValidEmail() && isValidPassword() && isIdenticalPassword() && isValidCPF() && isValidPhoneNumber()
 	}
 }

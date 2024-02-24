@@ -61,7 +61,9 @@ extension SignUpView {
 		TextFieldView(
 			iconName: "person",
 			state: $form.fullName,
-			placeholder: "Nome Completo"
+			placeholder: "Nome Completo",
+			error: "Nome precisa ter pelo menos 3 caracteres",
+			failure: !form.isValidFullName()
 		)
 	}
 }
