@@ -26,6 +26,8 @@ struct EditTextFieldView: View {
 					prompt: Text(placeholder).foregroundStyle(.gray.opacity(0.5))
 				)
 				.keyboardType(keyboard)
+				.autocapitalization(.none)
+				.disableAutocorrection(true)
 			}
 			.padding(5)
 			.overlay {
