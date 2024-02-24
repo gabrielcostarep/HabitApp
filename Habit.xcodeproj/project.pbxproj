@@ -29,6 +29,7 @@
 		ADAF0EF62B7353F400E582E1 /* SignInViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAF0EF52B7353F400E582E1 /* SignInViewRouter.swift */; };
 		ADC8BC782B75FA5700E97817 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC8BC772B75FA5700E97817 /* Gender.swift */; };
 		ADC8BC7A2B76047300E97817 /* createImageIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC8BC792B76047300E97817 /* createImageIcon.swift */; };
+		ADD632612B89CCC200B9F685 /* LoadingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD632602B89CCC200B9F685 /* LoadingButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		ADAF0EF52B7353F400E582E1 /* SignInViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewRouter.swift; sourceTree = "<group>"; };
 		ADC8BC772B75FA5700E97817 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		ADC8BC792B76047300E97817 /* createImageIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createImageIcon.swift; sourceTree = "<group>"; };
+		ADD632602B89CCC200B9F685 /* LoadingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +245,7 @@
 				ADC8BC792B76047300E97817 /* createImageIcon.swift */,
 				AD3AA9642B88728F0054A06A /* EditTextFieldView.swift */,
 				AD3AA9682B8877950054A06A /* EditSecureFieldView.swift */,
+				ADD632602B89CCC200B9F685 /* LoadingButtonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 			files = (
 				AD30FA342B68937A00A003F2 /* SplashViewRouter.swift in Sources */,
 				AD3AA9692B8877950054A06A /* EditSecureFieldView.swift in Sources */,
+				ADD632612B89CCC200B9F685 /* LoadingButtonView.swift in Sources */,
 				AD30FA302B68912500A003F2 /* SignInView.swift in Sources */,
 				AD30FA3D2B68962B00A003F2 /* SignUpViewModel.swift in Sources */,
 				AD30FA322B68913F00A003F2 /* SignInViewModel.swift in Sources */,

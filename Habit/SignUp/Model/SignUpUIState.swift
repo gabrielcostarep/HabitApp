@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum SignUpUIState {
+enum SignUpUIState: Equatable {
 	case none
 	case loading
 	case success

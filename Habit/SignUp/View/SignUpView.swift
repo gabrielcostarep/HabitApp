@@ -80,11 +80,6 @@ struct SignUpView: View {
 					.padding(.horizontal, 2)
 				}
 					
-				if case SignUpUIState.loading = viewModel.uiState {
-					VStack { ProgressView() }
-						.padding()
-				}
-					
 				if case SignUpUIState.error(let error) = viewModel.uiState {
 					VStack {}.alert(isPresented: .constant(true)) {
 						Alert(title: Text("Habit"), message: Text("\(error)"), dismissButton: .default(Text("ok")) {})
@@ -121,15 +116,12 @@ extension SignUpView {
 
 extension SignUpView {
 	var registerButton: some View {
-		Button("Cadastrar") {
-			viewModel.signUp()
-		}
-		.frame(width: 100, height: 40)
-		.background(form.isCompletedForm() ? .orange : .orange.opacity(0.5))
-		.foregroundStyle(.white)
-		.cornerRadius(10)
-		.padding(.top, 8)
-		.disabled(!form.isCompletedForm())
+		LoadingButtonView(
+			action: { viewModel.signUp() },
+			text: "Cadastrar",
+			showProgress: viewModel.uiState == SignUpUIState.loading,
+			disabled: !form.isCompletedForm() || viewModel.uiState == SignUpUIState.loading
+		)
 	}
 }
 

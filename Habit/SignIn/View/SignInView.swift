@@ -55,10 +55,6 @@ struct SignInView: View {
 					}
 					.padding(.horizontal, 2)
 
-					if case SignInUIState.loading = viewModel.uiState {
-						VStack { ProgressView() }
-					}
-
 					if case SignInUIState.error(let error) = viewModel.uiState {
 						VStack {}.alert(isPresented: .constant(true)) {
 							Alert(title: Text("Tente novamente mais tarde"), message: Text("\(error)"), dismissButton: .default(Text("ok")) {})
@@ -77,15 +73,12 @@ struct SignInView: View {
 
 extension SignInView {
 	var enterButton: some View {
-		Button("Entrar") {
-			viewModel.login(email: form.email, password: form.password)
-		}
-		.frame(width: 80, height: 40)
-		.background(form.isCompleteLogin() ? .orange : .orange.opacity(0.5))
-		.foregroundStyle(.white)
-		.cornerRadius(10)
-		.padding(.top, 8)
-		.disabled(!form.isCompleteLogin())
+		LoadingButtonView(
+			action: { viewModel.login(email: form.email, password: form.password) },
+			text: "Entrar",
+			showProgress: self.viewModel.uiState == SignInUIState.loading,
+			disabled: !form.isCompleteLogin() || self.viewModel.uiState == SignInUIState.loading
+		)
 	}
 }
 
