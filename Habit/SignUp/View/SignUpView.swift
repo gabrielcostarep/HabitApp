@@ -87,7 +87,7 @@ extension SignUpView {
 			iconName: "key",
 			state: $form.password,
 			placeholder: "Senha",
-			error: "Precisa ter pelo menos 8 caracteres. \nPrecisa conter pelo menos uma letra maiúscula. \nPrecisa conter pelo menos um dígito.",
+			error: "Precisa ter pelo menos 8 caracteres. \nPrecisa conter pelo menos uma letra maiúscula.",
 			failure: !form.isValidPassword(),
 			isSecure: true
 		)
@@ -117,6 +117,8 @@ extension SignUpView {
 			error: "CPF inválido",
 			failure: !form.isValidCPF()
 		)
+		
+// TODO: CPF Mask
 	}
 }
 
@@ -127,9 +129,11 @@ extension SignUpView {
 			state: $form.phone,
 			placeholder: "Telefone",
 			keyboard: .phonePad,
-			error: "Número inválido",
+			error: "Entre com DDD + 9 dígitos",
 			failure: !form.isValidPhoneNumber()
 		)
+		
+// TODO: Phone Mask
 	}
 }
 
