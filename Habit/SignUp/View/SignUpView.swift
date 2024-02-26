@@ -115,10 +115,9 @@ extension SignUpView {
 			placeholder: "CPF",
 			keyboard: .numberPad,
 			error: "CPF inválido",
-			failure: !form.isValidCPF()
+			failure: !form.isValidCPF(),
+			mask: .cpf
 		)
-		
-// TODO: CPF Mask
 	}
 }
 
@@ -130,10 +129,9 @@ extension SignUpView {
 			placeholder: "Telefone",
 			keyboard: .phonePad,
 			error: "Entre com DDD + 9 dígitos",
-			failure: !form.isValidPhoneNumber()
+			failure: !form.isValidPhoneNumber(),
+			mask: .phoneNumber
 		)
-		
-// TODO: Phone Mask
 	}
 }
 
