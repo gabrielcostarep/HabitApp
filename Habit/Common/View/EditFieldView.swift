@@ -70,7 +70,7 @@ extension EditFieldView {
 		if cpf.count == 4 && !formattedCPF.contains(".") {
 			formattedCPF.insert(".", at: formattedCPF.index(formattedCPF.startIndex, offsetBy: 3))
 		}
-		if cpf.count == 8 && cpf[cpf.index(cpf.startIndex, offsetBy: 7)] != "." {
+		if cpf.count == 8 && formattedCPF[formattedCPF.index(formattedCPF.startIndex, offsetBy: 7)] != "." {
 			formattedCPF.insert(".", at: formattedCPF.index(formattedCPF.startIndex, offsetBy: 7))
 		}
 		if cpf.count == 12 && !formattedCPF.contains("-") {
