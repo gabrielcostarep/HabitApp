@@ -25,9 +25,6 @@ struct EditFieldView: View {
 				if isSecure {
 					SecureField(placeholder, text: $state)
 						.textFieldStyle(EditFieldStyle(keyboard: keyboard))
-				} else if mask == .none {
-					TextField(placeholder, text: $state)
-						.textFieldStyle(EditFieldStyle(keyboard: keyboard))
 				} else {
 					TextField(placeholder, text: $state)
 						.onChange(of: state) { newValue in
