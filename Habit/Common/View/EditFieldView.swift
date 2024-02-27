@@ -95,5 +95,5 @@ extension EditFieldView {
 }
 
 #Preview {
-	EditFieldView(iconName: "person", state: .constant("11116708469"), placeholder: "CPF", mask: .cpf)
+	EditFieldView(iconName: "person", state: .constant("999.999.999-99"), placeholder: "CPF", mask: .cpf)
 }
