@@ -70,13 +70,13 @@ extension EditFieldView {
 
 	private func applyCPFFormat(cpf: String) -> String {
 		var formattedCPF = cpf
-		if cpf.count == 3 {
+		if cpf.count == 4 && !formattedCPF.contains(".") {
 			formattedCPF.insert(".", at: formattedCPF.index(formattedCPF.startIndex, offsetBy: 3))
 		}
-		if cpf.count == 7 {
+		if cpf.count == 8 && cpf[cpf.index(cpf.startIndex, offsetBy: 7)] != "." {
 			formattedCPF.insert(".", at: formattedCPF.index(formattedCPF.startIndex, offsetBy: 7))
 		}
-		if cpf.count == 11 {
+		if cpf.count == 12 && !formattedCPF.contains("-") {
 			formattedCPF.insert("-", at: formattedCPF.index(formattedCPF.startIndex, offsetBy: 11))
 		}
 		return String(formattedCPF.prefix(14))
@@ -84,13 +84,13 @@ extension EditFieldView {
 
 	private func applyPhoneNumberFormat(phoneNumber: String) -> String {
 		var formattedPhoneNumber = phoneNumber
-		if phoneNumber.count == 2 {
+		if phoneNumber.count == 3 && !formattedPhoneNumber.contains("(") {
 			formattedPhoneNumber.insert("(", at: formattedPhoneNumber.startIndex)
 		}
-		if phoneNumber.count == 3 {
+		if phoneNumber.count == 4 && !formattedPhoneNumber.contains(")") {
 			formattedPhoneNumber.insert(")", at: formattedPhoneNumber.index(formattedPhoneNumber.startIndex, offsetBy: 3))
 		}
-		if phoneNumber.count == 9 {
+		if phoneNumber.count == 10 && !formattedPhoneNumber.contains("-") {
 			formattedPhoneNumber.insert("-", at: formattedPhoneNumber.index(formattedPhoneNumber.startIndex, offsetBy: 9))
 		}
 		return String(formattedPhoneNumber.prefix(14))
