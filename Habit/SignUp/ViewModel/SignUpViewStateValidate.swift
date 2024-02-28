@@ -63,8 +63,22 @@ struct SignUpViewStateValidate {
 		let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
 		return phoneTest.evaluate(with: phone)
 	}
+	
+	func isValidBirthday() -> Bool {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "dd-MM-yyyy"
+		dateFormatter.locale = Locale(identifier: "pt_BR")
+				
+		guard let date = dateFormatter.date(from: birthday) else { return false }
+				
+		let currentYear = Calendar.current.component(.year, from: Date())
+				
+		guard let birthYear = Calendar.current.dateComponents([.year], from: date).year else { return false }
+				
+		return birthYear >= 1923 && birthYear <= currentYear
+	}
 
 	func isCompletedForm() -> Bool {
-		return isValidFullName() && isValidEmail() && isValidPassword() && isValidCPF() && isValidPhoneNumber()
+		return isValidFullName() && isValidEmail() && isValidPassword() && isValidCPF() && isValidPhoneNumber() && isValidBirthday()
 	}
 }
