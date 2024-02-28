@@ -60,6 +60,8 @@ extension EditFieldView {
 			return applyCPFFormat(cpf: value)
 		case .phoneNumber:
 			return applyPhoneNumberFormat(phoneNumber: value)
+		case .birthday:
+			return applyBirthdayFormat(birthday: value)
 		default:
 			return value
 		}
@@ -92,8 +94,20 @@ extension EditFieldView {
 		}
 		return String(formattedPhoneNumber.prefix(14))
 	}
+
+	private func applyBirthdayFormat(birthday: String) -> String {
+		var formattedBirthday = birthday
+		if birthday.count == 3 && !formattedBirthday.contains("-") {
+			formattedBirthday.insert("-", at: formattedBirthday.index(formattedBirthday.startIndex, offsetBy: 2))
+		}
+		if birthday.count == 6 && formattedBirthday[formattedBirthday.index(formattedBirthday.startIndex, offsetBy: 5)] != "-" {
+			formattedBirthday.insert("-", at: formattedBirthday.index(formattedBirthday.startIndex, offsetBy: 5))
+		}
+
+		return String(formattedBirthday.prefix(10))
+	}
 }
 
 #Preview {
-	EditFieldView(iconName: "person", state: .constant("999.999.999-99"), placeholder: "CPF", mask: .cpf)
+	EditFieldView(iconName: "person", state: .constant("28-02-2023"), placeholder: "CPF", mask: .cpf)
 }

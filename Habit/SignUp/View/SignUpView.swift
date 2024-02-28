@@ -34,6 +34,8 @@ struct SignUpView: View {
 						
 						phoneField
 						
+						birthdayField
+						
 						genderField
 							
 						registerButton
@@ -116,6 +118,18 @@ extension SignUpView {
 			error: "Entre com DDD + 9 dígitos",
 			failure: !form.isValidPhoneNumber(),
 			mask: .phoneNumber
+		)
+	}
+}
+
+extension SignUpView {
+	var birthdayField: some View {
+		EditFieldView(
+			iconName: "calendar",
+			state: $form.birthday,
+			placeholder: "Data de Nascimento",
+			keyboard: .asciiCapableNumberPad,
+			mask: .birthday
 		)
 	}
 }

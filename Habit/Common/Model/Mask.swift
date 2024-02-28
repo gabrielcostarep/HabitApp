@@ -11,4 +11,5 @@ enum Mask {
 	case none
 	case cpf
 	case phoneNumber
+	case birthday
 }
