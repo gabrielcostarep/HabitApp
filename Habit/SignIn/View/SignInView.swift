@@ -12,8 +12,6 @@ struct SignInView: View {
 
 	@State var form = SignInViewStateValidate()
 
-	@State var hiddenNavigation = true
-
 	var body: some View {
 		if case SignInUIState.goToHomeScreen = viewModel.uiState {
 			viewModel.homeView()
@@ -52,7 +50,7 @@ struct SignInView: View {
 				.padding(.horizontal, 32)
 				.background(.white)
 				.navigationBarTitle("Login", displayMode: .inline)
-				.navigationBarHidden(hiddenNavigation)
+				.navigationBarHidden(true)
 			}
 		}
 	}
