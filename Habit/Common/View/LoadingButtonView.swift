@@ -18,12 +18,13 @@ struct LoadingButtonView: View {
 			Button(action: {
 				action()
 			}, label: {
-				Text(showProgress ? " " : text)
+				if showProgress {
+					ProgressView()
+				} else {
+					Text(text)
+				}
 
 			}).disabled(disabled || showProgress)
-
-			ProgressView()
-				.opacity(showProgress ? 1 : 0)
 		}
 		.frame(maxWidth: 130, minHeight: 40)
 		.background(disabled ? .orange.opacity(0.5) : .orange)
