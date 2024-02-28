@@ -114,7 +114,7 @@ extension SignUpView {
 			iconName: "smartphone",
 			state: $form.phone,
 			placeholder: "Telefone",
-			keyboard: .phonePad,
+			keyboard: .asciiCapableNumberPad,
 			error: "Entre com DDD + 9 dígitos",
 			failure: !form.isValidPhoneNumber(),
 			mask: .phoneNumber
