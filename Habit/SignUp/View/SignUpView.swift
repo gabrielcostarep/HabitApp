@@ -30,8 +30,6 @@ struct SignUpView: View {
 						
 						passwordField
 						
-						passwordVerifyField
-						
 						cpfField
 						
 						phoneField
@@ -89,19 +87,6 @@ extension SignUpView {
 			placeholder: "Senha",
 			error: "Precisa ter pelo menos 8 caracteres. \nPrecisa conter pelo menos uma letra maiúscula.",
 			failure: !form.isValidPassword(),
-			isSecure: true
-		)
-	}
-}
-
-extension SignUpView {
-	var passwordVerifyField: some View {
-		EditFieldView(
-			iconName: "key.fill",
-			state: $form.passwordVerify,
-			placeholder: "Repetir Senha",
-			error: "Senhas precisam ser idênticas",
-			failure: !form.isIdenticalPassword(),
 			isSecure: true
 		)
 	}

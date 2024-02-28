@@ -11,9 +11,9 @@ struct SignUpViewStateValidate {
 	var fullName        = ""
 	var email           = ""
 	var password        = ""
-	var passwordVerify  = ""
 	var cpf             = ""
 	var phone           = ""
+	var birthday        = ""
 	
 	func isValidFullName() -> Bool {
 		return fullName.count >= 3
@@ -27,10 +27,6 @@ struct SignUpViewStateValidate {
 	func isValidPassword() -> Bool {
 		let regex = try! NSRegularExpression(pattern: "^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d@$!%*?&]{8,}$", options: [])
 		return regex.firstMatch(in: password, options: [], range: NSRange(location: 0, length: password.utf16.count)) != nil
-	}
-	
-	func isIdenticalPassword() -> Bool {
-		return password == passwordVerify
 	}
 	
 	func isValidCPF() -> Bool {
@@ -69,6 +65,6 @@ struct SignUpViewStateValidate {
 	}
 
 	func isCompletedForm() -> Bool {
-		return isValidFullName() && isValidEmail() && isValidPassword() && isIdenticalPassword() && isValidCPF() && isValidPhoneNumber()
+		return isValidFullName() && isValidEmail() && isValidPassword() && isValidCPF() && isValidPhoneNumber()
 	}
 }
