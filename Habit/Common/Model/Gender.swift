@@ -10,7 +10,6 @@ import SwiftUI
 enum Gender: String, CaseIterable, Identifiable {
 	case male       = "Masculino"
 	case female     = "Feminino"
-	case undefined  = "Indefinido"
 
 	var id: String { rawValue }
 }

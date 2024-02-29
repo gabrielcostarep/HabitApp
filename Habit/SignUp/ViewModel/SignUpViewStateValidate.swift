@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct SignUpViewStateValidate {
-	var fullName        = ""
-	var email           = ""
-	var password        = ""
-	var cpf             = ""
-	var phone           = ""
-	var birthday        = ""
+	var fullName = ""
+	var email    = ""
+	var password = ""
+	var cpf      = ""
+	var phone    = ""
+	var birthday = ""
+	var gender   = Gender.male
 	
 	func isValidFullName() -> Bool {
 		return fullName.count >= 3

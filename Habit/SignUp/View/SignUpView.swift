@@ -10,8 +10,7 @@ import SwiftUI
 struct SignUpView: View {
 	@ObservedObject var viewModel: SignUpViewModel
 	
-	@State var form    = SignUpViewStateValidate()
-	@State var gender  = Gender.undefined
+	@State var form = SignUpViewStateValidate()
 	
 	var body: some View {
 		ZStack {
@@ -142,7 +141,7 @@ extension SignUpView {
 			createImageIcon(iconName: "figure.dress.line.vertical.figure")
 				.padding(5)
 			
-			Picker("Gender", selection: $gender) {
+			Picker("Gender", selection: $form.gender) {
 				ForEach(Gender.allCases) { genderValue in
 					Text(genderValue.rawValue)
 						.tag(genderValue)
