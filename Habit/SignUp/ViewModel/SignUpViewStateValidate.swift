@@ -70,13 +70,18 @@ struct SignUpViewStateValidate {
 		dateFormatter.dateFormat = "dd-MM-yyyy"
 		dateFormatter.locale = Locale(identifier: "pt_BR")
 				
-		guard let date = dateFormatter.date(from: birthday) else { return false }
+		guard let date = dateFormatter.date(from: birthday) else {
+			return false
+		}
 				
-		let currentYear = Calendar.current.component(.year, from: Date())
+		let currentDate = Date()
+		let calendar = Calendar.current
 				
-		guard let birthYear = Calendar.current.dateComponents([.year], from: date).year else { return false }
+		guard let minDate = calendar.date(byAdding: .year, value: -100, to: currentDate) else { return false }
+
+		guard let maxDate = calendar.date(byAdding: .year, value: -4, to: currentDate) else { return false }
 				
-		return birthYear >= 1923 && birthYear <= currentYear
+		return date >= minDate && date <= maxDate
 	}
 
 	func isCompletedForm() -> Bool {
