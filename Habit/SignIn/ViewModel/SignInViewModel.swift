@@ -10,6 +10,7 @@ import SwiftUI
 
 class SignInViewModel: ObservableObject {
 	@Published var uiState: SignInUIState = .none
+	@Published var form = SignInViewStateValidate()
 
 	private var cancellable: AnyCancellable?
 	private let publisher = PassthroughSubject<Bool, Never>()
@@ -26,7 +27,7 @@ class SignInViewModel: ObservableObject {
 		cancellable?.cancel()
 	}
 
-	func login(email: String, password: String) {
+	func login() {
 		uiState = .loading
 
 		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

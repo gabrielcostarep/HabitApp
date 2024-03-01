@@ -10,8 +10,6 @@ import SwiftUI
 struct SignInView: View {
 	@ObservedObject var viewModel: SignInViewModel
 
-	@State var form = SignInViewStateValidate()
-
 	var body: some View {
 		if case SignInUIState.goToHomeScreen = viewModel.uiState {
 			viewModel.homeView()
@@ -60,11 +58,11 @@ extension SignInView {
 	var emailField: some View {
 		EditFieldView(
 			iconName: "person",
-			state: $form.email,
+			state: $viewModel.form.email,
 			placeholder: "E-mail",
 			keyboard: .emailAddress,
 			error: "E-mail inválido",
-			failure: !form.isValidEmail()
+			failure: !viewModel.form.isValidEmail()
 		)
 	}
 }
@@ -73,10 +71,10 @@ extension SignInView {
 	var passwordField: some View {
 		EditFieldView(
 			iconName: "lock",
-			state: $form.password,
+			state: $viewModel.form.password,
 			placeholder: "Senha",
 			error: "Senha precisa ter pelo menos 8 caracteres",
-			failure: !form.isValidPassword(),
+			failure: !viewModel.form.isValidPassword(),
 			isSecure: true
 		)
 	}
@@ -85,10 +83,10 @@ extension SignInView {
 extension SignInView {
 	var submitButton: some View {
 		LoadingButtonView(
-			action: { viewModel.login(email: form.email, password: form.password) },
+			action: { viewModel.login() },
 			text: "Entrar",
 			showProgress: self.viewModel.uiState == SignInUIState.loading,
-			disabled: !form.isCompleteLogin() || self.viewModel.uiState == SignInUIState.loading
+			disabled: !viewModel.form.isCompleteLogin() || self.viewModel.uiState == SignInUIState.loading
 		)
 	}
 }

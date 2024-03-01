@@ -10,8 +10,6 @@ import SwiftUI
 struct SignUpView: View {
 	@ObservedObject var viewModel: SignUpViewModel
 	
-	@State var form = SignUpViewStateValidate()
-	
 	var body: some View {
 		ZStack {
 			ScrollView(showsIndicators: false) {
@@ -59,10 +57,10 @@ extension SignUpView {
 	var fullNameField: some View {
 		EditFieldView(
 			iconName: "person",
-			state: $form.fullName,
+			state: $viewModel.form.fullName,
 			placeholder: "Nome Completo",
 			error: "Nome precisa ter pelo menos 3 caracteres",
-			failure: !form.isValidFullName()
+			failure: !viewModel.form.isValidFullName()
 		)
 	}
 }
@@ -71,11 +69,11 @@ extension SignUpView {
 	var emailField: some View {
 		EditFieldView(
 			iconName: "envelope.fill",
-			state: $form.email,
+			state: $viewModel.form.email,
 			placeholder: "E-mail",
 			keyboard: .emailAddress,
 			error: "E-mail inválido",
-			failure: !form.isValidEmail()
+			failure: !viewModel.form.isValidEmail()
 		)
 	}
 }
@@ -84,10 +82,10 @@ extension SignUpView {
 	var passwordField: some View {
 		EditFieldView(
 			iconName: "key",
-			state: $form.password,
+			state: $viewModel.form.password,
 			placeholder: "Senha",
 			error: "Precisa ter pelo menos 8 caracteres. \nPrecisa conter pelo menos uma letra maiúscula.",
-			failure: !form.isValidPassword(),
+			failure: !viewModel.form.isValidPassword(),
 			isSecure: true
 		)
 	}
@@ -97,11 +95,11 @@ extension SignUpView {
 	var cpfField: some View {
 		EditFieldView(
 			iconName: "person.crop.artframe",
-			state: $form.cpf,
+			state: $viewModel.form.cpf,
 			placeholder: "CPF",
 			keyboard: .numberPad,
 			error: "CPF inválido",
-			failure: !form.isValidCPF(),
+			failure: !viewModel.form.isValidCPF(),
 			mask: .cpf
 		)
 	}
@@ -111,11 +109,11 @@ extension SignUpView {
 	var phoneField: some View {
 		EditFieldView(
 			iconName: "smartphone",
-			state: $form.phone,
+			state: $viewModel.form.phone,
 			placeholder: "Telefone",
 			keyboard: .asciiCapableNumberPad,
 			error: "Entre com DDD + 9 dígitos",
-			failure: !form.isValidPhoneNumber(),
+			failure: !viewModel.form.isValidPhoneNumber(),
 			mask: .phoneNumber
 		)
 	}
@@ -125,11 +123,11 @@ extension SignUpView {
 	var birthdayField: some View {
 		EditFieldView(
 			iconName: "calendar",
-			state: $form.birthday,
+			state: $viewModel.form.birthday,
 			placeholder: "Data de Nascimento",
 			keyboard: .asciiCapableNumberPad,
 			error: "Digite uma data no formato dd-MM-yyyy",
-			failure: !form.isValidBirthday(),
+			failure: !viewModel.form.isValidBirthday(),
 			mask: .birthday
 		)
 	}
@@ -141,7 +139,7 @@ extension SignUpView {
 			createImageIcon(iconName: "figure.dress.line.vertical.figure")
 				.padding(5)
 			
-			Picker("Gender", selection: $form.gender) {
+			Picker("Gender", selection: $viewModel.form.gender) {
 				ForEach(Gender.allCases) { genderValue in
 					Text(genderValue.rawValue)
 						.tag(genderValue)
@@ -162,7 +160,7 @@ extension SignUpView {
 			action: { viewModel.signUp() },
 			text: "Cadastrar",
 			showProgress: viewModel.uiState == SignUpUIState.loading,
-			disabled: !form.isCompletedForm() || viewModel.uiState == SignUpUIState.loading
+			disabled: !viewModel.form.isCompletedForm() || viewModel.uiState == SignUpUIState.loading
 		)
 	}
 }

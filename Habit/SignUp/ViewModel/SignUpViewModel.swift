@@ -10,6 +10,7 @@ import SwiftUI
 
 class SignUpViewModel: ObservableObject {
 	@Published var uiState: SignUpUIState = .none
+	@Published var form = SignUpViewStateValidate()
 
 	var publisher: PassthroughSubject<Bool, Never>!
 
