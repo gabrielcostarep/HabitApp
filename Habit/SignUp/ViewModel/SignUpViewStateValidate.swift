@@ -67,7 +67,7 @@ struct SignUpViewStateValidate {
 	
 	func isValidBirthday() -> Bool {
 		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "dd-MM-yyyy"
+		dateFormatter.dateFormat = "dd/MM/yyyy"
 		dateFormatter.locale = Locale(identifier: "pt_BR")
 				
 		guard let date = dateFormatter.date(from: birthday) else {

@@ -126,7 +126,7 @@ extension SignUpView {
 			state: $viewModel.form.birthday,
 			placeholder: "Data de Nascimento",
 			keyboard: .asciiCapableNumberPad,
-			error: "Digite uma data no formato dd-MM-yyyy",
+			error: "Digite uma data no formato dd/MM/yyyy",
 			failure: !viewModel.form.isValidBirthday(),
 			mask: .birthday
 		)
