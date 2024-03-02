@@ -97,11 +97,11 @@ extension EditFieldView {
 
 	private func applyBirthdayFormat(birthday: String) -> String {
 		var formattedBirthday = birthday
-		if birthday.count == 3 && !formattedBirthday.contains("-") {
-			formattedBirthday.insert("-", at: formattedBirthday.index(formattedBirthday.startIndex, offsetBy: 2))
+		if birthday.count == 3 && !formattedBirthday.contains("/") {
+			formattedBirthday.insert("/", at: formattedBirthday.index(formattedBirthday.startIndex, offsetBy: 2))
 		}
-		if birthday.count == 6 && formattedBirthday[formattedBirthday.index(formattedBirthday.startIndex, offsetBy: 5)] != "-" {
-			formattedBirthday.insert("-", at: formattedBirthday.index(formattedBirthday.startIndex, offsetBy: 5))
+		if birthday.count == 6 && formattedBirthday[formattedBirthday.index(formattedBirthday.startIndex, offsetBy: 5)] != "/" {
+			formattedBirthday.insert("/", at: formattedBirthday.index(formattedBirthday.startIndex, offsetBy: 5))
 		}
 
 		return String(formattedBirthday.prefix(10))
