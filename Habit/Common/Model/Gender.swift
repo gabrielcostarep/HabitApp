@@ -12,4 +12,7 @@ enum Gender: String, CaseIterable, Identifiable {
 	case female     = "Feminino"
 
 	var id: String { rawValue }
+	
+	var index: Self.AllCases.Index { Self.allCases.firstIndex { self == $0} ?? 0}
 }
+
