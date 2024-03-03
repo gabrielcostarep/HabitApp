@@ -18,13 +18,13 @@ class SignUpViewModel: ObservableObject {
 		uiState = .loading
 
 		WebServices.postUser(
-			fullName: form.fullName,
-			email: form.email,
-			password: form.password,
-			cpf: form.cpf,
-			phone: form.phone,
-			birthday: form.birthday.split(separator: "/").reversed().joined(separator: "-"),
-			gender: form.gender.index
+			request: SignUpRequest(fullName: form.fullName,
+			                       email: form.email,
+			                       password: form.password,
+			                       cpf: form.cpf,
+			                       phone: form.phone,
+			                       birthday: form.birthday.split(separator: "/").reversed().joined(separator: "-"),
+			                       gender: form.gender.index)
 		)
 
 //		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

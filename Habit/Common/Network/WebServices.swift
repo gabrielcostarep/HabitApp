@@ -9,7 +9,7 @@ import SwiftUI
 
 enum WebServices {
 	private enum EndPoint: String {
-		case base = "https://habitplus-api.tiagoaguiar.co/"
+		case base = "https://habitplus-api.tiagoaguiar.co"
 		case postUser = "/users"
 	}
 
@@ -19,26 +19,8 @@ enum WebServices {
 		return URLRequest(url: url)
 	}
 
-	static func postUser(
-		fullName: String,
-		email: String,
-		password: String,
-		cpf: String,
-		phone: String,
-		birthday: String,
-		gender: Int
-	) {
-		let formData: [String: Any] = [
-			"name": fullName,
-			"email": email,
-			"document": cpf,
-			"phone": phone,
-			"gender": gender,
-			"birthday": birthday,
-			"password": password
-		]
-
-		let jsonData = try? JSONSerialization.data(withJSONObject: formData)
+	static func postUser(request: SignUpRequest) {
+		guard let jsonData = try? JSONEncoder().encode(request) else { return }
 
 		guard var urlRequest = createURLRequest(path: .postUser) else { return }
 
@@ -49,15 +31,15 @@ enum WebServices {
 		
 		let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
 			guard let data = data, error == nil else {
-				print(error)
+				print(error as Any)
 				return
 			}
 			
 			print(String(data: data, encoding: .utf8) as Any)
-			print(response)
+			print(response as Any)
 			
 			if let r = response as? HTTPURLResponse {
-				print(r.statusCode)
+				print(r.statusCode) 
 			}
 		}
 		

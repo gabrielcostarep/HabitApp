@@ -14,9 +14,9 @@
             filePath = "Habit/Common/Network/WebServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "postUser(fullName:email:password:cpf:phone:birthday:gender:)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "postUser(request:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -47,6 +47,36 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
                   endingLineNumber = "51"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  uuid = "321AFB10-249D-4A8D-8220-9C9D93EA78ED - 1716dc0af9991032"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static Habit.WebServices.postUser(request: Habit.SignUpRequest) -&gt; ()"
+                  moduleName = "Habit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gabrielcostadev/SwiftApps/Habit/Habit/Common/Network/WebServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "156">
+               </Location>
+               <Location
+                  uuid = "321AFB10-249D-4A8D-8220-9C9D93EA78ED - 1716dc0af9991032"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static Habit.WebServices.postUser(request: Habit.SignUpRequest) -&gt; ()"
+                  moduleName = "Habit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gabrielcostadev/SwiftApps/Habit/Habit/Common/Network/WebServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
                   offsetFromSymbolStart = "244">
                </Location>
             </Locations>
