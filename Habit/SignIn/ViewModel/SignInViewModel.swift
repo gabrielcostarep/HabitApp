@@ -30,6 +30,8 @@ class SignInViewModel: ObservableObject {
 	func login() {
 		uiState = .loading
 
+//		WebServices.login(request: SignInRequest(email: form.email, password: form.password))
+
 		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 			self.uiState = .goToHomeScreen
 		}

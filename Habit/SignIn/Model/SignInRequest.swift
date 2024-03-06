@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct SignInRequest {
+struct SignInRequest: Encodable {
 	let email: String
 	let password: String
-	
+
 	enum CodingKeys: String, CodingKey {
 		case email = "username"
 		case password

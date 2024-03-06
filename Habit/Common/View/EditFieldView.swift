@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct EditFieldView: View {
+	enum Mask {
+		case none
+		case cpf
+		case phoneNumber
+		case birthday
+	}
+
 	var iconName:       String
 	@Binding var state: String
 	var placeholder:    String

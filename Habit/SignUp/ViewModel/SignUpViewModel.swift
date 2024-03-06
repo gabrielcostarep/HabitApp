@@ -17,19 +17,28 @@ class SignUpViewModel: ObservableObject {
 	func signUp() {
 		uiState = .loading
 
-		WebServices.postUser(
-			request: SignUpRequest(fullName: form.fullName,
-			                       email: form.email,
-			                       password: form.password,
-			                       cpf: form.cpf,
-			                       phone: form.phone,
-			                       birthday: form.birthday.split(separator: "/").reversed().joined(separator: "-"),
-			                       gender: form.gender.index)
-		)
+		WebServices.postUser(request: SignUpRequest(fullName: form.fullName,
+		                                            email: form.email,
+		                                            password: form.password,
+		                                            cpf: form.cpf,
+		                                            phone: form.phone,
+		                                            birthday: form.birthday.split(separator: "/").reversed().joined(separator: "-"),
+		                                            gender: form.gender.index))
+		{ successResponse, errorResponse in
+			if let error = errorResponse {
+				DispatchQueue.main.async {
+					self.uiState = .error(error.detail)
+				}
+			}
 
-//		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//			self.publisher.send(true)
-//			self.uiState = .success
-//		}
+			if let success = successResponse {
+				if success {
+					DispatchQueue.main.async {
+						self.uiState = .success
+						self.publisher.send(success)
+					}
+				}
+			}
+		}
 	}
 }
