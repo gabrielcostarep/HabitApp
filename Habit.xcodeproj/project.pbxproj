@@ -35,6 +35,7 @@
 		ADD632612B89CCC200B9F685 /* LoadingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD632602B89CCC200B9F685 /* LoadingButtonView.swift */; };
 		ADD68F8E2B8F105200CCAB1E /* createImageIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD68F8D2B8F105200CCAB1E /* createImageIcon.swift */; };
 		ADE976012B96B1F500FA2D36 /* SignInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE976002B96B1F500FA2D36 /* SignInRequest.swift */; };
+		ADF53C652B9ACE8700A5A157 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF53C642B9ACE8700A5A157 /* SignInResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		ADD632602B89CCC200B9F685 /* LoadingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButtonView.swift; sourceTree = "<group>"; };
 		ADD68F8D2B8F105200CCAB1E /* createImageIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createImageIcon.swift; sourceTree = "<group>"; };
 		ADE976002B96B1F500FA2D36 /* SignInRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequest.swift; sourceTree = "<group>"; };
+		ADF53C642B9ACE8700A5A157 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				AD30FA312B68913F00A003F2 /* SignInViewModel.swift */,
 				ADAF0EF52B7353F400E582E1 /* SignInViewRouter.swift */,
 				AD3AA9662B8875560054A06A /* SignInViewStateValidate.swift */,
+				ADF53C642B9ACE8700A5A157 /* SignInResponse.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				AD65AD562B8BF9E400A9BC3D /* EditFieldStyle.swift in Sources */,
 				AD30FA3B2B6895E400A003F2 /* SignUpView.swift in Sources */,
 				ADAF0EF62B7353F400E582E1 /* SignInViewRouter.swift in Sources */,
+				ADF53C652B9ACE8700A5A157 /* SignInResponse.swift in Sources */,
 				AD30FA2E2B6890E900A003F2 /* SignInUIState.swift in Sources */,
 				AD86ADE22B9824D50090D72C /* ErrorResponse.swift in Sources */,
 			);

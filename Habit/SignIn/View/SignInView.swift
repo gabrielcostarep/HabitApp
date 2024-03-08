@@ -40,7 +40,7 @@ struct SignInView: View {
 
 					if case SignInUIState.error(let error) = viewModel.uiState {
 						VStack {}.alert(isPresented: .constant(true)) {
-							Alert(title: Text("Tente novamente mais tarde"), message: Text("\(error)"), dismissButton: .default(Text("ok")) {})
+							Alert(title: Text("Habit"), message: Text("\(error)"), dismissButton: .default(Text("ok")) {})
 						}
 					}
 				}

@@ -11,10 +11,10 @@ import SwiftUI
 class SignInViewModel: ObservableObject {
 	@Published var uiState: SignInUIState = .none
 	@Published var form = SignInViewStateValidate()
-
+	
 	private var cancellable: AnyCancellable?
 	private let publisher = PassthroughSubject<Bool, Never>()
-
+	
 	init() {
 		cancellable = publisher.sink { value in
 			if value {
@@ -22,18 +22,30 @@ class SignInViewModel: ObservableObject {
 			}
 		}
 	}
-
+	
 	deinit {
 		cancellable?.cancel()
 	}
-
+	
 	func login() {
 		uiState = .loading
-
-//		WebServices.login(request: SignInRequest(email: form.email, password: form.password))
-
-		DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-			self.uiState = .goToHomeScreen
+		
+		WebServices.login(request: SignInRequest(email: form.email,
+		                                         password: form.password))
+		{ successResponse, errorResponse in
+			
+			if let error = errorResponse {
+				DispatchQueue.main.async {
+					self.uiState = .error(error.detail.message)
+				}
+			}
+			
+			if let success = successResponse {
+				DispatchQueue.main.async {
+					print(success)
+					self.uiState = .goToHomeScreen
+				}
+			}
 		}
 	}
 }
