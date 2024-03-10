@@ -51,7 +51,6 @@ enum WebServices {
 		
 		URLSession.shared.dataTask(with: urlRequest) { data, response, error in
 			guard let data = data, error == nil else {
-				print(error)
 				completion(.failure(.internalServerError, nil))
 				return
 			}
@@ -68,11 +67,6 @@ enum WebServices {
 						break
 				}
 			}
-			
-			print(String(data: data, encoding: .utf8))
-			print("response\n")
-			print(response)
-			
 		}.resume()
 	}
 	
