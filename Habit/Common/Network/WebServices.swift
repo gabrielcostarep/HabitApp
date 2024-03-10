@@ -111,8 +111,7 @@ enum WebServices {
 				case .failure(let error, let data):
 					if let data = data {
 						if error == .badRequest {
-							let decoder = JSONDecoder()
-							let response = try? decoder.decode(ErrorResponse.self, from: data)
+							let response = try? JSONDecoder().decode(ErrorResponse.self, from: data)
 							completion(nil, response)
 						}
 					}
@@ -131,14 +130,12 @@ enum WebServices {
 				case .failure(let error, let data):
 					if let data = data {
 						if error == .unauthorized {
-							let decoder = JSONDecoder()
-							let response = try? decoder.decode(SignInErrorResponse.self, from: data)
+							let response = try? JSONDecoder().decode(SignInErrorResponse.self, from: data)
 							completion(nil, response)
 						}
 					}
 				case .success(let data):
-					let decoder = JSONDecoder()
-					let response = try? decoder.decode(SignInResponse.self, from: data)
+					let response = try? JSONDecoder().decode(SignInResponse.self, from: data)
 					completion(response, nil)
 			}
 		}
