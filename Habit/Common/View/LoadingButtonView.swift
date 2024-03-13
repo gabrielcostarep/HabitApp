@@ -30,7 +30,6 @@ struct LoadingButtonView: View {
 		.background(disabled ? .orange.opacity(0.5) : .orange)
 		.foregroundStyle(.white)
 		.cornerRadius(10)
-		.padding(.top, 8)
 	}
 }
 
