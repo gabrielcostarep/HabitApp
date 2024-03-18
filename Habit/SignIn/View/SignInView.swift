@@ -111,5 +111,5 @@ extension SignInView {
 }
 
 #Preview {
-	SignInView(viewModel: SignInViewModel())
+	SignInView(viewModel: SignInViewModel(interactor: SignInInteractor()))
 }
