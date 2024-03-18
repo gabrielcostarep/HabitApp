@@ -36,7 +36,7 @@ class SignInViewModel: ObservableObject {
 	func login() {
 		uiState = .loading
 		
-		cancellableRequest = interactor.login(loginRequest: SignInRequest(email: form.email,
+		cancellableRequest = interactor.login(request: SignInRequest(email: form.email,
 		                                                                  password: form.password))
 			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: { completion in

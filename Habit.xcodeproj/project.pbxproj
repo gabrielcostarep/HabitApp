@@ -24,6 +24,8 @@
 		AD3AA9652B88728F0054A06A /* EditFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3AA9642B88728F0054A06A /* EditFieldView.swift */; };
 		AD3AA9672B8875560054A06A /* SignInViewStateValidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3AA9662B8875560054A06A /* SignInViewStateValidate.swift */; };
 		AD3AA96B2B8879070054A06A /* SignUpViewStateValidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3AA96A2B8879070054A06A /* SignUpViewStateValidate.swift */; };
+		AD568BEF2BA822AB0005B0BD /* SignUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD568BEE2BA822AB0005B0BD /* SignUpInteractor.swift */; };
+		AD568BF12BA822BD0005B0BD /* SignUpRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD568BF02BA822BD0005B0BD /* SignUpRemoteDataSource.swift */; };
 		AD63F19B2B787A0E00EE97A7 /* SignUpUIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD63F19A2B787A0E00EE97A7 /* SignUpUIState.swift */; };
 		AD65AD562B8BF9E400A9BC3D /* EditFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD65AD552B8BF9E400A9BC3D /* EditFieldStyle.swift */; };
 		AD77D1862B662212002FDADF /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD77D1852B662212002FDADF /* SplashViewModel.swift */; };
@@ -60,6 +62,8 @@
 		AD3AA9642B88728F0054A06A /* EditFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldView.swift; sourceTree = "<group>"; };
 		AD3AA9662B8875560054A06A /* SignInViewStateValidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewStateValidate.swift; sourceTree = "<group>"; };
 		AD3AA96A2B8879070054A06A /* SignUpViewStateValidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewStateValidate.swift; sourceTree = "<group>"; };
+		AD568BEE2BA822AB0005B0BD /* SignUpInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInteractor.swift; sourceTree = "<group>"; };
+		AD568BF02BA822BD0005B0BD /* SignUpRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRemoteDataSource.swift; sourceTree = "<group>"; };
 		AD63F19A2B787A0E00EE97A7 /* SignUpUIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUIState.swift; sourceTree = "<group>"; };
 		AD65AD552B8BF9E400A9BC3D /* EditFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldStyle.swift; sourceTree = "<group>"; };
 		AD77D1852B662212002FDADF /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 		AD30FA362B6895A900A003F2 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				AD568BED2BA8227E0005B0BD /* Interactor */,
 				AD30FA392B6895C700A003F2 /* Model */,
 				AD30FA382B6895BE00A003F2 /* View */,
 				AD30FA372B6895B600A003F2 /* ViewModel */,
@@ -271,6 +276,15 @@
 				ADD632602B89CCC200B9F685 /* LoadingButtonView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		AD568BED2BA8227E0005B0BD /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				AD568BEE2BA822AB0005B0BD /* SignUpInteractor.swift */,
+				AD568BF02BA822BD0005B0BD /* SignUpRemoteDataSource.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		AD65AD542B8BF9AD00A9BC3D /* Style */ = {
@@ -401,6 +415,7 @@
 				AD9A0C5A2B9179010083F907 /* WebServices.swift in Sources */,
 				ADE2CFF12BA819640041E537 /* AppError.swift in Sources */,
 				ADD632612B89CCC200B9F685 /* LoadingButtonView.swift in Sources */,
+				AD568BF12BA822BD0005B0BD /* SignUpRemoteDataSource.swift in Sources */,
 				AD30FA302B68912500A003F2 /* SignInView.swift in Sources */,
 				AD30FA3D2B68962B00A003F2 /* SignUpViewModel.swift in Sources */,
 				AD2823AC2B93C8EA004AC8F3 /* SignUpRequest.swift in Sources */,
@@ -421,6 +436,7 @@
 				AD77D1862B662212002FDADF /* SplashViewModel.swift in Sources */,
 				ADC8BC782B75FA5700E97817 /* Gender.swift in Sources */,
 				AD3AA9652B88728F0054A06A /* EditFieldView.swift in Sources */,
+				AD568BEF2BA822AB0005B0BD /* SignUpInteractor.swift in Sources */,
 				AD65AD562B8BF9E400A9BC3D /* EditFieldStyle.swift in Sources */,
 				AD30FA3B2B6895E400A003F2 /* SignUpView.swift in Sources */,
 				ADAF0EF62B7353F400E582E1 /* SignInViewRouter.swift in Sources */,

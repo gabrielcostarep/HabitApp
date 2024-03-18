@@ -98,20 +98,4 @@ enum WebServices {
 		     data: components.query?.data(using: .utf8),
 		     completion: completion)
 	}
-	
-	static func postUser(request: SignUpRequest, completion: @escaping (Bool?, ErrorResponse?) -> Void) {
-		jsonEncoder(path: .postUser, body: request) { result in
-			switch result {
-			case .failure(let error, let data):
-				if let data = data {
-					if error == .badRequest {
-						let response = try? JSONDecoder().decode(ErrorResponse.self, from: data)
-						completion(nil, response)
-					}
-				}
-			case .success:
-				completion(true, nil)
-			}
-		}
-	}
 }
