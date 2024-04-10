@@ -14,7 +14,7 @@ struct SignInView: View {
 		if case SignInUIState.goToHomeScreen = viewModel.uiState {
 			viewModel.homeView()
 		} else {
-			NavigationView {
+			NavigationStack {
 				ScrollView(showsIndicators: false) {
 					Spacer(minLength: 130)
 
@@ -50,6 +50,7 @@ struct SignInView: View {
 				.navigationBarTitle("Login", displayMode: .inline)
 				.navigationBarHidden(true)
 			}
+			.tint(.orange)
 		}
 	}
 }
@@ -85,8 +86,8 @@ extension SignInView {
 		LoadingButtonView(
 			action: { viewModel.login() },
 			text: "Entrar",
-			showProgress: self.viewModel.uiState == SignInUIState.loading,
-			disabled: !viewModel.form.isCompleteLogin() || self.viewModel.uiState == SignInUIState.loading
+			showProgress: viewModel.uiState == SignInUIState.loading,
+			disabled: !viewModel.form.isCompleteLogin() || viewModel.uiState == SignInUIState.loading
 		)
 	}
 }
