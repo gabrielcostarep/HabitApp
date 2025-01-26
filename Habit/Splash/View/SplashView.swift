@@ -35,6 +35,7 @@ extension SplashView {
 				.frame(maxHeight: .infinity)
 				.padding(20)
 				.background(.white)
+				.ignoresSafeArea(.all)
 
 			if let error = error {
 				VStack {}.alert(isPresented: .constant(true)) {

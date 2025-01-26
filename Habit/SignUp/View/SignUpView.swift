@@ -9,37 +9,37 @@ import SwiftUI
 
 struct SignUpView: View {
 	@ObservedObject var viewModel: SignUpViewModel
-	
+
 	var body: some View {
 		ZStack {
 			ScrollView(showsIndicators: false) {
 				Spacer(minLength: 130)
-					
+				
 				VStack(alignment: .leading) {
 					Text("Cadastro")
 						.foregroundStyle(.black)
 						.font(.title.bold())
-						
+
 					VStack(alignment: .center, spacing: 16) {
 						fullNameField
-						
+
 						emailField
-						
+
 						passwordField
-						
+
 						cpfField
-						
+
 						phoneField
-						
+
 						birthdayField
-						
+
 						genderField
-							
+
 						registerButton
 					}
 					.padding(.horizontal, 2)
 				}
-					
+
 				if case SignUpUIState.error(let error) = viewModel.uiState {
 					VStack {}.alert(isPresented: .constant(true)) {
 						Alert(title: Text("Habit"), message: Text("\(error)"), dismissButton: .default(Text("ok")) {})
@@ -84,7 +84,7 @@ extension SignUpView {
 			iconName: "key",
 			state: $viewModel.form.password,
 			placeholder: "Senha",
-			error: "Precisa ter pelo menos 8 caracteres. \nPrecisa conter pelo menos uma letra maiúscula.",
+			error: "Precisa conter ao menos 8 caracteres. \nPrecisa conter pelo menos uma letra maiúscula.",
 			failure: !viewModel.form.isValidPassword(),
 			isSecure: true
 		)
@@ -138,7 +138,7 @@ extension SignUpView {
 		HStack {
 			createImageIcon(iconName: "figure.dress.line.vertical.figure")
 				.padding(5)
-			
+
 			Picker("Gender", selection: $viewModel.form.gender) {
 				ForEach(Gender.allCases) { genderValue in
 					Text(genderValue.rawValue)
