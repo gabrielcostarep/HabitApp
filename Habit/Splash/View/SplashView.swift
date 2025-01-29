@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SplashView: View {
-	@ObservedObject var viewModel: SplashViewModel
+	@StateObject var viewModel = SplashViewModel()
 
 	var body: some View {
 		Group {
@@ -47,5 +47,5 @@ extension SplashView {
 }
 
 #Preview {
-	SplashView(viewModel: SplashViewModel())
+	SplashView()
 }
