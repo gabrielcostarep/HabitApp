@@ -15,41 +15,50 @@ struct EditFieldView: View {
 		case birthday
 	}
 
-	var iconName:       String
-	@Binding var state: String
-	var placeholder:    String
-	var keyboard:       UIKeyboardType  = .default
-	var error:          String?         = nil
-	var failure:  			Bool            = false
-	var isSecure: 			Bool            = false
-	var mask:           Mask            = .none
+	var iconName:           String
+	@Binding var input:     String
+	var placeholder:        String
+	var keyboard:           UIKeyboardType  = .default
+	var error:              String?         = nil
+	var failure:  		    Bool            = false
+	var buttonShowPassword: Bool            = false
+	var mask:               Mask            = .none
+	@Binding var isSecure:  Bool
 
 	var body: some View {
 		VStack {
 			HStack {
 				createImageIcon(iconName: iconName)
-
-				if isSecure {
-					SecureField(placeholder, text: $state)
+				
+				ZStack {
+					TextField(placeholder, text: $input)
 						.textFieldStyle(EditFieldStyle(keyboard: keyboard))
-				} else {
-					TextField(placeholder, text: $state)
-						.onChange(of: state) { newValue in
-							self.state = self.maskedValue(for: newValue)
+						.onChange(of: input) { newValue in
+							self.input = self.maskedValue(for: newValue)
 						}
+						.opacity(isSecure ? 0 : 1)
+					
+					SecureField(placeholder, text: $input)
 						.textFieldStyle(EditFieldStyle(keyboard: keyboard))
+						.opacity(isSecure ? 1 : 0)
+				}
+				
+				if buttonShowPassword {
+					Image(systemName: isSecure ? "eye.slash.fill" : "eye.fill")
+						.foregroundColor(isSecure ? .gray : .orange)
+						.onTapGesture { isSecure.toggle() }
 				}
 			}
 			.padding(5)
 			.overlay {
 				RoundedRectangle(cornerRadius: 8)
-					.stroke(state.isEmpty || !failure ? .gray : .red, lineWidth: 1)
+					.stroke(input.isEmpty || !failure ? .gray : .red, lineWidth: 1)
 			}
-
-			if let error = error, failure == true, !state.isEmpty {
+			
+			if let error = error, failure == true, !input.isEmpty {
 				HStack {
 					Spacer()
-
+					
 					Text(error)
 						.foregroundStyle(.red)
 						.font(.footnote)
@@ -115,6 +124,8 @@ extension EditFieldView {
 	}
 }
 
-#Preview {
-	EditFieldView(iconName: "person", state: .constant("28-02-2023"), placeholder: "CPF", mask: .cpf)
-}
+//
+// #Preview {
+//	EditFieldView(iconName: "key", input: .constant("Senha123"), placeholder: "Digite sua senha", isSecure: .constante(false), buttonShowPassword: true)
+//		.padding()
+// }

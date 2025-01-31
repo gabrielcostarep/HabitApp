@@ -9,7 +9,7 @@ import SwiftUI
 
 enum SplashViewRouter {
 	static func makeSignInView() -> some View {
-		return SignInView()
+		return SignInView(viewModel: SignInViewModel(interactor: SignInInteractor()))
 	}
 
 	static func makeHomeView() -> some View {

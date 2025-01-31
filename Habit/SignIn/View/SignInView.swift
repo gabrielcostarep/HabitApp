@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SignInView: View {
 	@ObservedObject var viewModel: SignInViewModel
+	@State var isSecure: Bool = true
 
 	var body: some View {
 		if case SignInUIState.goToHomeScreen = viewModel.uiState {
@@ -59,11 +60,12 @@ extension SignInView {
 	var emailField: some View {
 		EditFieldView(
 			iconName: "person",
-			state: $viewModel.form.email,
+			input: $viewModel.form.email,
 			placeholder: "E-mail",
 			keyboard: .emailAddress,
 			error: "E-mail inválido",
-			failure: !viewModel.form.isValidEmail()
+			failure: !viewModel.form.isValidEmail(),
+			isSecure: .constant(false)
 		)
 	}
 }
@@ -72,11 +74,12 @@ extension SignInView {
 	var passwordField: some View {
 		EditFieldView(
 			iconName: "lock",
-			state: $viewModel.form.password,
+			input: $viewModel.form.password,
 			placeholder: "Senha",
 			error: "Senha precisa ter pelo menos 8 caracteres",
 			failure: !viewModel.form.isValidPassword(),
-			isSecure: true
+			buttonShowPassword: true,
+			isSecure: $isSecure
 		)
 	}
 }
