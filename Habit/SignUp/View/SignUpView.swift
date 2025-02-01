@@ -56,34 +56,32 @@ struct SignUpView: View {
 
 extension SignUpView {
 	var fullNameField: some View {
-		EditFieldView(
+		TextFieldView(
 			iconName: "person",
 			input: $viewModel.form.fullName,
 			placeholder: "Nome Completo",
 			error: "Nome precisa ter pelo menos 3 caracteres",
-			failure: !viewModel.form.isValidFullName(),
-			isSecure: .constant(false)
+			failure: !viewModel.form.isValidFullName()
 		)
 	}
 }
 
 extension SignUpView {
 	var emailField: some View {
-		EditFieldView(
+		TextFieldView(
 			iconName: "envelope.fill",
 			input: $viewModel.form.email,
 			placeholder: "E-mail",
 			keyboard: .emailAddress,
 			error: "E-mail inválido",
-			failure: !viewModel.form.isValidEmail(),
-			isSecure: .constant(false)
+			failure: !viewModel.form.isValidEmail()
 		)
 	}
 }
 
 extension SignUpView {
 	var passwordField: some View {
-		EditFieldView(
+		SecureFieldView(
 			iconName: "key",
 			input: $viewModel.form.password,
 			placeholder: "Senha",
@@ -97,45 +95,42 @@ extension SignUpView {
 
 extension SignUpView {
 	var cpfField: some View {
-		EditFieldView(
+		TextFieldView(
 			iconName: "person.crop.artframe",
 			input: $viewModel.form.cpf,
 			placeholder: "CPF",
 			keyboard: .numberPad,
 			error: "CPF inválido",
 			failure: !viewModel.form.isValidCPF(),
-			mask: .cpf,
-			isSecure: .constant(false)
+			mask: .cpf
 		)
 	}
 }
 
 extension SignUpView {
 	var phoneField: some View {
-		EditFieldView(
+		TextFieldView(
 			iconName: "smartphone",
 			input: $viewModel.form.phone,
 			placeholder: "Telefone",
 			keyboard: .asciiCapableNumberPad,
 			error: "Entre com DDD + 9 dígitos",
 			failure: !viewModel.form.isValidPhoneNumber(),
-			mask: .phoneNumber,
-			isSecure: .constant(false)
+			mask: .phoneNumber
 		)
 	}
 }
 
 extension SignUpView {
 	var birthdayField: some View {
-		EditFieldView(
+		TextFieldView(
 			iconName: "calendar",
 			input: $viewModel.form.birthday,
 			placeholder: "Data de Nascimento",
 			keyboard: .asciiCapableNumberPad,
 			error: "Digite uma data no formato dd/MM/yyyy",
 			failure: !viewModel.form.isValidBirthday(),
-			mask: .birthday,
-			isSecure: .constant(false)
+			mask: .birthday
 		)
 	}
 }

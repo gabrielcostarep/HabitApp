@@ -58,21 +58,20 @@ struct SignInView: View {
 
 extension SignInView {
 	var emailField: some View {
-		EditFieldView(
+		TextFieldView(
 			iconName: "person",
 			input: $viewModel.form.email,
 			placeholder: "E-mail",
 			keyboard: .emailAddress,
 			error: "E-mail inválido",
-			failure: !viewModel.form.isValidEmail(),
-			isSecure: .constant(false)
+			failure: !viewModel.form.isValidEmail()
 		)
 	}
 }
 
 extension SignInView {
 	var passwordField: some View {
-		EditFieldView(
+		SecureFieldView(
 			iconName: "lock",
 			input: $viewModel.form.password,
 			placeholder: "Senha",

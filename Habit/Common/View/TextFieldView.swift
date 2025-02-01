@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditFieldView: View {
+struct TextFieldView: View {
 	enum Mask {
 		case none
 		case cpf
@@ -21,44 +21,29 @@ struct EditFieldView: View {
 	var keyboard:           UIKeyboardType  = .default
 	var error:              String?         = nil
 	var failure:  		    Bool            = false
-	var buttonShowPassword: Bool            = false
 	var mask:               Mask            = .none
-	@Binding var isSecure:  Bool
 
 	var body: some View {
 		VStack {
 			HStack {
 				createImageIcon(iconName: iconName)
-				
-				ZStack {
-					TextField(placeholder, text: $input)
-						.textFieldStyle(EditFieldStyle(keyboard: keyboard))
-						.onChange(of: input) { newValue in
-							self.input = self.maskedValue(for: newValue)
-						}
-						.opacity(isSecure ? 0 : 1)
-					
-					SecureField(placeholder, text: $input)
-						.textFieldStyle(EditFieldStyle(keyboard: keyboard))
-						.opacity(isSecure ? 1 : 0)
-				}
-				
-				if buttonShowPassword {
-					Image(systemName: isSecure ? "eye.slash.fill" : "eye.fill")
-						.foregroundColor(isSecure ? .gray : .orange)
-						.onTapGesture { isSecure.toggle() }
-				}
+
+				TextField(placeholder, text: $input)
+					.textFieldStyle(EditFieldStyle(keyboard: keyboard))
+					.onChange(of: input) { newValue in
+						self.input = self.maskedValue(for: newValue)
+					}
 			}
 			.padding(5)
 			.overlay {
 				RoundedRectangle(cornerRadius: 8)
 					.stroke(input.isEmpty || !failure ? .gray : .red, lineWidth: 1)
 			}
-			
+
 			if let error = error, failure == true, !input.isEmpty {
 				HStack {
 					Spacer()
-					
+
 					Text(error)
 						.foregroundStyle(.red)
 						.font(.footnote)
@@ -69,7 +54,7 @@ struct EditFieldView: View {
 	}
 }
 
-extension EditFieldView {
+extension TextFieldView {
 	private func maskedValue(for value: String) -> String {
 		switch mask {
 		case .cpf:
@@ -123,9 +108,3 @@ extension EditFieldView {
 		return String(formattedBirthday.prefix(10))
 	}
 }
-
-//
-// #Preview {
-//	EditFieldView(iconName: "key", input: .constant("Senha123"), placeholder: "Digite sua senha", isSecure: .constante(false), buttonShowPassword: true)
-//		.padding()
-// }
